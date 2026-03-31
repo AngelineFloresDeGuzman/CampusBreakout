@@ -87,7 +87,7 @@ const Jumpscare = ({ isVisible, onComplete }: JumpscareProps) => {
               <motion.div className="font-display text-[20vw] md:text-[15vw] text-primary leading-none">
                 🧟
               </motion.div>
-              <motion.p className="font-display text-6xl md:text-9xl text-white mt-4">
+              <motion.p className="font-display text-4xl sm:text-6xl md:text-7xl lg:text-9xl text-white mt-4 px-2 sm:px-4 break-words max-w-full">
                 RUN
               </motion.p>
             </div>
@@ -121,7 +121,7 @@ const Jumpscare = ({ isVisible, onComplete }: JumpscareProps) => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.8 }}
-              className="font-display text-5xl md:text-7xl text-primary mb-6"
+              className="font-display text-3xl sm:text-5xl md:text-6xl lg:text-7xl text-primary mb-4 sm:mb-6 px-4 break-words"
             >
               SEE YOU
             </motion.p>
