@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Nosifer&family=Rubik+Wet+Paint&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 5%;
+    --foreground: 0 0% 92%;
+
+    --card: 0 0% 8%;
+    --card-foreground: 0 0% 92%;
+
+    --popover: 0 0% 8%;
+    --popover-foreground: 0 0% 92%;
+
+    --primary: 0 85% 45%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 0 0% 12%;
+    --secondary-foreground: 0 0% 85%;
+
+    --muted: 0 0% 14%;
+    --muted-foreground: 0 0% 55%;
+
+    --accent: 15 90% 50%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 0 0% 16%;
+    --input: 0 0% 16%;
+    --ring: 0 85% 45%;
+
+    --radius: 0.5rem;
+
+    /* Custom tokens */
+    --blood-red: 0 85% 35%;
+    --fire-orange: 25 95% 50%;
+    --dark-surface: 0 0% 7%;
+    --zombie-green: 120 40% 25%;
+
+    --gradient-blood: linear-gradient(135deg, hsl(0 85% 35%), hsl(0 85% 20%));
+    --gradient-fire: linear-gradient(180deg, hsl(0 85% 35%), hsl(25 95% 50%), hsl(0 0% 5%));
+    --gradient-dark: linear-gradient(180deg, hsl(0 0% 8%), hsl(0 0% 3%));
+    --shadow-blood: 0 0 40px hsl(0 85% 35% / 0.4);
+    --shadow-fire: 0 0 60px hsl(25 95% 50% / 0.3);
+
+    --font-display: 'Nosifer', cursive;
+    --font-body: 'Inter', sans-serif;
+    --font-typewriter: 'Rubik Wet Paint', cursive;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+  }
+
+  h1, h2, h3 {
+    font-family: var(--font-display);
+  }
+}
+
+/* Custom utilities */
+@layer utilities {
+  .text-shadow-blood {
+    text-shadow: 0 0 20px hsl(0 85% 35% / 0.6), 0 0 40px hsl(0 85% 35% / 0.3);
+  }
+
+  .text-shadow-fire {
+    text-shadow: 0 0 15px hsl(25 95% 50% / 0.5), 0 2px 4px hsl(0 0% 0% / 0.8);
+  }
+
+  .bg-noise {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
