@@ -1,12 +1,19 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Download, Skull, AlertTriangle } from "lucide-react";
 import Jumpscare from "./Jumpscare";
+import jumpScareSound from "@/assets/jump-scare.mp3";
 
 const DownloadSection = () => {
   const [showJumpscare, setShowJumpscare] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  useEffect(() => {
+    audioRef.current = new Audio(jumpScareSound);
+    audioRef.current.volume = 0.8;
+  }, []);
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -17,6 +24,17 @@ const DownloadSection = () => {
 
   const handleDownloadClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     setShowJumpscare(true);
+    // Play jump scare sound
+    if (audioRef.current) {
+      audioRef.current.currentTime = 0;
+      audioRef.current.play().catch(() => {});
+      // Stop after 3 seconds
+      setTimeout(() => {
+        if (audioRef.current) {
+          audioRef.current.pause();
+        }
+      }, 3000);
+    }
     setTimeout(() => setShowJumpscare(false), 5500);
   };
 
@@ -110,9 +128,8 @@ const DownloadSection = () => {
             )}
 
             <motion.a
-              href="https://drive.google.com/drive/folders/1JLEi2K3lxBjN4epNqOI2qUIN2L5W6-6P?fbclid=IwY2xjawRAtnRleHRuA2FlbQIxMQBzcnRjBmFwcF9pZAEwAAEeS6pvoHirQIGpu-3yDYrjQ3HwvLfxGbRDbfEpsZwBF1pWUWp49gVUbWhTPKw_aem_HqpG3cqDTSW9qdDmaUYEFA"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="https://github.com/AngelineFloresDeGuzman/CampusBreakout/releases/download/v1.0.0/CampusBreakout.apk"
+              download
               onClick={handleDownloadClick}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -150,10 +167,10 @@ const DownloadSection = () => {
           >
             <span className="flex items-center gap-2 text-blood">
               <span className="w-2 h-2 bg-blood rounded-full animate-pulse" />
-              ⚠ beta version 1.2.0
+              Beta v1.2.0
             </span>
             <div className="w-px h-4 bg-border" />
-            <span>85 MB</span>
+            <span>~250 MB</span>
             <div className="w-px h-4 bg-border" />
             <span>Android 8.0+</span>
           </motion.div>

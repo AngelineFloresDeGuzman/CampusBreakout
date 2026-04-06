@@ -16,40 +16,55 @@ const links = [
 const Navbar = () => {
   const [open, setOpen] = useState(false);
 
-  return (
-    <nav className="fixed top-0 left-0 right-0 z-50">
-      <div className="w-full px-6 lg:px-12 flex items-center justify-between h-20">
-        {/* Logo + Brand */}
-        <a href="#" className="flex items-center gap-3">
-          <img src={logo} alt="Campus Breakout" className="h-10 w-auto" />
-          <img src="/src/assets/campus-breakout-logo.2png" alt="" className="h-6 w-auto hidden sm:block" />
-        </a>
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const element = document.querySelector(href);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+    setOpen(false);
+  };
 
-        {/* Desktop - Center Nav */}
-        <div className="hidden md:flex items-center justify-center gap-10">
-          {links.map((l) => (
-            <a
-              key={l.label}
-              href={l.href}
-              className="text-white/70 hover:text-white text-sm font-medium transition-colors tracking-wide"
-            >
-              {l.label}
-            </a>
-          ))}
+  return (
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-black/50 backdrop-blur-md border-b border-white/10">
+      <div className="w-full px-6 lg:px-12 flex items-center justify-between h-20">
+        {/* Left side - Logo + Navigation */}
+        <div className="flex items-center gap-8">
+          {/* Logo + Brand */}
+          <a href="#" className="flex items-center gap-3">
+            <img src={logo} alt="Campus Breakout" className="h-10 w-auto" />
+            <img src="/src/assets/campus-breakout-logo.2png" alt="" className="h-6 w-auto hidden sm:block" />
+          </a>
+
+          {/* Desktop - Navigation */}
+          <div className="hidden md:flex items-center gap-6">
+            {links.map((l) => (
+              <a
+                key={l.label}
+                href={l.href}
+                onClick={(e) => handleNavClick(e, l.href)}
+                className="text-white/70 hover:text-white text-sm font-medium transition-colors tracking-wide cursor-pointer"
+              >
+                {l.label}
+              </a>
+            ))}
+          </div>
         </div>
 
-        {/* Desktop - CTA Buttons */}
+        {/* Right side - CTA Buttons */}
         <div className="hidden md:flex items-center gap-3">
           <a
             href="#trailer"
-            className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium text-white/80 hover:text-white border border-white/20 hover:border-white/40 rounded-full transition-all"
+            onClick={(e) => handleNavClick(e, '#trailer')}
+            className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium text-white/80 hover:text-white border border-white/20 hover:border-white/40 rounded-full transition-all cursor-pointer"
           >
             <Play className="w-4 h-4" />
             Trailer
           </a>
           <a
             href="#download"
-            className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium text-white bg-blood hover:bg-blood/90 rounded-full transition-all"
+            onClick={(e) => handleNavClick(e, '#download')}
+            className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium text-white bg-blood hover:bg-blood/90 rounded-full transition-all cursor-pointer"
           >
             <Download className="w-4 h-4" />
             Download
@@ -78,11 +93,11 @@ const Navbar = () => {
             <motion.a
               key={l.label}
               href={l.href}
-              onClick={() => setOpen(false)}
+              onClick={(e) => handleNavClick(e, l.href)}
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: open ? 1 : 0, x: open ? 0 : -20 }}
               transition={{ delay: i * 0.05 }}
-              className="block py-3 px-4 text-foreground hover:text-primary hover:bg-primary/10 rounded-lg text-base font-medium transition-colors"
+              className="block py-3 px-4 text-foreground hover:text-primary hover:bg-primary/10 rounded-lg text-base font-medium transition-colors cursor-pointer"
             >
               {l.label}
             </motion.a>
