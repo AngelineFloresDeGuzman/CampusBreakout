@@ -77,8 +77,9 @@ const HeroSection = () => {
         className="absolute bottom-24 left-0 right-0 z-10 flex items-center justify-center gap-3"
       >
         <motion.a
-          href="/CampusBreakout.apk"
-          download
+          href="https://drive.google.com/drive/folders/1JLEi2K3lxBjN4epNqOI2qUIN2L5W6-6P?fbclid=IwY2xjawRAtnRleHRuA2FlbQIxMQBzcnRjBmFwcF9pZAEwAAEeS6pvoHirQIGpu-3yDYrjQ3HwvLfxGbRDbfEpsZwBF1pWUWp49gVUbWhTPKw_aem_HqpG3cqDTSW9qdDmaUYEFA"
+          target="_blank"
+          rel="noopener noreferrer"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.6 }}

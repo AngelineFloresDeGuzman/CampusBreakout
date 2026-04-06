@@ -110,8 +110,9 @@ const DownloadSection = () => {
             )}
 
             <motion.a
-              href="/CampusBreakout.apk"
-              download
+              href="https://drive.google.com/drive/folders/1JLEi2K3lxBjN4epNqOI2qUIN2L5W6-6P?fbclid=IwY2xjawRAtnRleHRuA2FlbQIxMQBzcnRjBmFwcF9pZAEwAAEeS6pvoHirQIGpu-3yDYrjQ3HwvLfxGbRDbfEpsZwBF1pWUWp49gVUbWhTPKw_aem_HqpG3cqDTSW9qdDmaUYEFA"
+              target="_blank"
+              rel="noopener noreferrer"
               onClick={handleDownloadClick}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
