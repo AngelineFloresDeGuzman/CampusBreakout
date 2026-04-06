@@ -19,7 +19,19 @@ const GameDetailsSection = () => {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="text-5xl md:text-6xl font-display text-primary text-shadow-blood mb-4">
+          <motion.div
+            initial={{ scale: 0.8, opacity: 0 }}
+            whileInView={{ scale: 1, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2, duration: 0.5 }}
+            className="inline-block mb-4"
+          >
+            <span className="px-4 py-1.5 rounded-full bg-hazard/10 border border-hazard/30 text-hazard text-sm font-medium tracking-wide flex items-center gap-2">
+              <span className="text-base">🎮</span> Specifications
+            </span>
+          </motion.div>
+          
+          <h2 className="text-5xl md:text-6xl font-display text-blood text-shadow-blood mb-4">
             Game Details
           </h2>
         </motion.div>

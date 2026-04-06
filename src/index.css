@@ -39,6 +39,7 @@
     /* Custom tokens */
     --blood-red: 0 85% 35%;
     --fire-orange: 25 95% 50%;
+    --hazard-yellow: 50 95% 50%;
     --dark-surface: 0 0% 7%;
     --zombie-green: 120 40% 25%;
 
@@ -48,9 +49,8 @@
     --shadow-blood: 0 0 40px hsl(0 85% 35% / 0.4);
     --shadow-fire: 0 0 60px hsl(25 95% 50% / 0.3);
 
-    --font-display: 'Nosifer', cursive;
+    --font-display: 'Rubik Wet Paint', cursive;
     --font-body: 'Inter', sans-serif;
-    --font-typewriter: 'Rubik Wet Paint', cursive;
   }
 }
 
@@ -77,6 +77,10 @@
 
   .text-shadow-fire {
     text-shadow: 0 0 15px hsl(25 95% 50% / 0.5), 0 2px 4px hsl(0 0% 0% / 0.8);
+  }
+
+  .text-shadow-hazard {
+    text-shadow: 0 0 15px hsl(50 95% 50% / 0.6), 0 0 30px hsl(50 95% 50% / 0.3);
   }
 
   .bg-noise {

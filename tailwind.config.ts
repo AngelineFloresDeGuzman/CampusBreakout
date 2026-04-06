@@ -54,6 +54,7 @@ export default {
         },
         blood: "hsl(var(--blood-red))",
         fire: "hsl(var(--fire-orange))",
+        hazard: "hsl(var(--hazard-yellow))",
         "dark-surface": "hsl(var(--dark-surface))",
         "zombie-green": "hsl(var(--zombie-green))",
       },
