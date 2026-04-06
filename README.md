@@ -1,73 +1,74 @@
-# Welcome to your Lovable project
+# Campus Breakout
 
-## Project info
+A thrilling 2D top-down survival horror game set in a zombie-infested university campus. Built with Unity and delivered as an Android APK.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+![Campus Breakout Logo](src/assets/campus-breakout-logo.png)
 
-## How can I edit this code?
+## Game Overview
 
-There are several ways of editing your application.
+**Campus Breakout** throws you into the halls of a quiet university where a normal day quickly turns into a nightmare. The once peaceful campus, full of life and learning, becomes a battleground for survival as a mysterious infection spreads rapidly through dormitories and lecture halls.
 
-**Use Lovable**
+- **Genre**: 2D Top-Down Survival Horror
+- **Theme**: Zombie Outbreak
+- **Engine**: Unity
+- **Platform**: Android (APK)
+- **Pre-release Date**: April 6, 2026
+- **Official Release Date**: April 16, 2026
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+## Features
 
-Changes made via Lovable will be committed automatically to this repo.
+- **Improvised Weaponry** - Baseball bats, scissors, and whatever you can find. These aren't military tools — they're school supplies used in desperation. Every swing counts.
 
-**Use your preferred IDE**
+- **Limited Visibility** - Your flashlight is your lifeline. Navigate through pitch-dark corridors where every shadow could hide a threat. Stay in the light… or lose your mind.
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+- **The Horde Awaits** - Zombies press against every window, lurk behind every door. The campus is surrounded — there is no easy way out. Fight, run, survive.
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## The Infected
 
-Follow these steps:
+Three types of zombies await you:
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+- **Wander** (Green) - Slow-moving but relentless. Easy to outrun, but dangerous in groups.
+- **Runner** (Yellow) - Fast and agile. Former athletes now sprinting at full speed to catch prey.
+- **Tank** (Red) - Massive and nearly unstoppable. Can smash through doors and walls.
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+## Development Team
 
-# Step 3: Install the necessary dependencies.
-npm i
+Meet the developers behind the nightmare:
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+- **Angeline De Guzman** - Game Designer & Document Specialist (Typography, Branding, Technical Direction)
+- **Tristan Santos** - Game Artist (Character Design, Sprite Animation, World Building)
+- **Kyla Mariano** - Game Programmer (AI, Game Logic, Audio/Video Integration)
+- **Justin Vergara** - Game Programmer (Player Mechanics, Enemy Systems, Combat/Inventory)
+- **Bryce Ganotice** - Instructor
 
-**Edit a file directly in GitHub**
+## Live Website
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+Visit the official website: [campusbreakout.vercel.app](https://campusbreakout.vercel.app)
 
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
+## Technologies Used
 
 This project is built with:
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+- **Vite** - Next generation frontend tooling
+- **TypeScript** - Type-safe JavaScript
+- **React** - UI library
+- **shadcn/ui** - UI components
+- **Tailwind CSS** - Utility-first CSS framework
+- **Framer Motion** - Animation library
+- **Unity** - Game engine
 
-## How can I deploy this project?
+## Development
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+To run the website locally:
 
-## Can I connect a custom domain to my Lovable project?
+```sh
+# Install dependencies
+npm i
 
-Yes, you can!
+# Start development server
+npm run dev
+```
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+## License
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+ 2026 Campus Breakout. All rights reserved.

@@ -8,36 +8,28 @@ const HeroSection = () => {
   const containerRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
-  const [isMuted, setIsMuted] = useState(false);
-  const [userMuted, setUserMuted] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
+  const [userMuted, setUserMuted] = useState(true);
 
   useEffect(() => {
     audioRef.current = new Audio(jumpScareSound);
     audioRef.current.volume = 0.8;
 
+    // Start video muted for autoplay to work
     if (videoRef.current) {
-      videoRef.current.play().catch(() => {
-        // Autoplay with sound blocked, mute and try again
-        if (videoRef.current) {
-          videoRef.current.muted = true;
-          setIsMuted(true);
-          videoRef.current.play();
-        }
-      });
+      videoRef.current.muted = true;
+      videoRef.current.play().catch(() => {});
     }
 
-    // Observe visibility to mute when not visible
+    // Observe visibility to control video
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (!entry.isIntersecting && videoRef.current && !userMuted) {
-            // Mute when scrolled out of view
-            videoRef.current.muted = true;
-            setIsMuted(true);
-          } else if (entry.isIntersecting && videoRef.current && !userMuted) {
-            // Unmute when scrolled back into view (if user didn't manually mute)
-            videoRef.current.muted = false;
-            setIsMuted(false);
+          if (!entry.isIntersecting && videoRef.current) {
+            // Pause when scrolled out of view
+            videoRef.current.pause();
+          } else if (entry.isIntersecting && videoRef.current) {
+            // Play when scrolled back into view
             videoRef.current.play().catch(() => {});
           }
         });
@@ -71,7 +63,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section ref={containerRef} className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
+    <section ref={containerRef} className="relative h-screen md:min-h-screen flex items-center justify-center overflow-hidden bg-black">
       {/* Video Background - Full visibility */}
       <motion.div className="absolute inset-0 z-0" style={{ y, scale }}>
         <video

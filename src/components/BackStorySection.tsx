@@ -36,7 +36,7 @@ const BackStorySection = () => {
   }, []);
 
   return (
-    <section id="backstory" className="relative py-24 bg-noise">
+    <section id="backstory" className="relative py-24 bg-noise bg-grid-lines-red">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

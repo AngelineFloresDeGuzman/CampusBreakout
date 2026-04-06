@@ -47,7 +47,6 @@ const StatBar = ({ label, value, color }: { label: string; value: number; color:
       <motion.div
         initial={{ width: 0 }}
         whileInView={{ width: `${value}%` }}
-        viewport={{ once: true }}
         transition={{ duration: 0.8, delay: 0.2 }}
         className="h-full rounded-full relative"
         style={{ backgroundColor: color }}
@@ -70,7 +69,7 @@ const StatBar = ({ label, value, color }: { label: string; value: number; color:
 const ZombieSection = () => {
 
   return (
-    <section id="zombies" className="relative py-24 bg-noise bg-grid-lines">
+    <section id="backstory" className="relative py-24 bg-noise bg-grid-lines-red">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

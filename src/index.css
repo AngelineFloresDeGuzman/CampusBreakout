@@ -97,6 +97,16 @@
     );
   }
 
+  .bg-grid-lines-red {
+    background-image: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 40px,
+      rgba(220, 38, 38, 0.25) 40px,
+      rgba(220, 38, 38, 0.25) 41px
+    );
+  }
+
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
   }
