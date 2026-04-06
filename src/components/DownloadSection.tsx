@@ -82,7 +82,7 @@ const DownloadSection = () => {
           >
             <span className="px-4 py-2 rounded-full bg-hazard/20 border border-hazard/50 text-hazard text-sm font-bold tracking-wide flex items-center gap-2">
               <AlertTriangle className="w-5 h-5" />
-              ⚠ ENTER AT YOUR OWN RISK
+              ENTER AT YOUR OWN RISK
             </span>
           </motion.div>
 
@@ -93,7 +93,7 @@ const DownloadSection = () => {
             transition={{ delay: 0.3, duration: 0.6 }}
             className="text-6xl md:text-8xl font-display text-blood text-shadow-blood mb-6"
           >
-            ⚠ Ready to Survive?
+            Ready to Survive?
           </motion.h2>
 
           <motion.p 
@@ -104,7 +104,7 @@ const DownloadSection = () => {
             className="font-body text-muted-foreground max-w-2xl mx-auto text-lg md:text-xl mb-12 leading-relaxed"
           >
             Can you survive the outbreak… or will you become one of them? 
-            <span className="text-blood font-semibold">Download the APK</span> and face the horde.
+            <span className="text-blood font-semibold">Download APK</span> and face the horde.
           </motion.p>
 
           {/* Download button with dramatic effects */}
@@ -172,7 +172,7 @@ const DownloadSection = () => {
             <div className="w-px h-4 bg-border" />
             <span>~250 MB</span>
             <div className="w-px h-4 bg-border" />
-            <span>Android 8.0+</span>
+            <span>Android</span>
           </motion.div>
 
           {/* Warning text */}

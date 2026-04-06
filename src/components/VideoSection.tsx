@@ -49,7 +49,7 @@ const VideoSection = () => {
   }, [showVideo]);
 
   return (
-    <section ref={sectionRef} id="trailer" className="relative py-32 overflow-hidden">
+    <section ref={sectionRef} id="trailer" className="relative py-32 overflow-hidden bg-grid-lines">
       {/* Cinematic background effects */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-blood/5 to-background" />
       <motion.div 
@@ -178,24 +178,6 @@ const VideoSection = () => {
               </video>
             )}
           </div>
-
-          {/* Video stats bar */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.4 }}
-            className="mt-8 flex items-center justify-center gap-8 text-muted-foreground text-sm"
-          >
-            <div className="flex items-center gap-2 text-hazard">
-              <span className="w-2 h-2 bg-hazard rounded-full animate-pulse" />
-              <span>⚠ HD Quality</span>
-            </div>
-            <div className="w-px h-4 bg-border" />
-            <span>2:34 Duration</span>
-            <div className="w-px h-4 bg-border" />
-            <span>Official Release</span>
-          </motion.div>
         </motion.div>
       </div>
     </section>

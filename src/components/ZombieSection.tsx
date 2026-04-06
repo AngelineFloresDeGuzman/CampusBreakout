@@ -1,10 +1,13 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
+import wanderImage from "@/assets/Wander.png";
+import runnerImage from "@/assets/Runner.png";
+import tankImage from "@/assets/Tank.png";
 
 const zombies = [
   {
-    name: "Wanderer",
-    emoji: "🧟",
+    name: "Wander",
+    image: wanderImage,
     description: "Slow-moving but relentless. These undead shuffle through the campus halls, drawn by any sound or movement. Easy to outrun, but dangerous in groups.",
     stats: {
       speed: 20,
@@ -15,50 +18,59 @@ const zombies = [
   },
   {
     name: "Runner",
-    emoji: "🏃",
+    image: runnerImage,
     description: "Fast and agile. Once human athletes, now terrifying predators that sprint at full speed. Their screams echo through corridors as they chase prey.",
     stats: {
       speed: 95,
       strength: 60,
       threat: 85,
     },
-    color: "#ef4444",
+    color: "#eab308",
   },
   {
     name: "Tank",
-    emoji: "💪",
+    image: tankImage,
     description: "Massive and nearly unstoppable. These hulking infected can smash through doors and walls. Tremors announce their approach—if you hear them, run.",
     stats: {
       speed: 15,
       strength: 100,
       threat: 90,
     },
-    color: "#a855f7",
+    color: "#dc2626",
   },
 ];
 
 const StatBar = ({ label, value, color }: { label: string; value: number; color: string }) => (
   <div className="flex items-center gap-2">
     <span className="text-xs text-muted-foreground w-16">{label}</span>
-    <div className="flex-1 h-2 bg-muted rounded-full overflow-hidden">
+    <div className="flex-1 h-2 bg-muted rounded-full overflow-hidden relative">
       <motion.div
         initial={{ width: 0 }}
         whileInView={{ width: `${value}%` }}
         viewport={{ once: true }}
         transition={{ duration: 0.8, delay: 0.2 }}
-        className="h-full rounded-full"
+        className="h-full rounded-full relative"
         style={{ backgroundColor: color }}
-      />
+      >
+        {/* Flowing shine effect */}
+        <motion.div
+          className="absolute inset-0 rounded-full"
+          style={{
+            background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent)",
+          }}
+          animate={{ x: ["-100%", "100%"] }}
+          transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
+        />
+      </motion.div>
     </div>
     <span className="text-xs font-medium w-8 text-right">{value}</span>
   </div>
 );
 
 const ZombieSection = () => {
-  const [selectedZombie, setSelectedZombie] = useState(0);
 
   return (
-    <section id="zombies" className="relative py-24 bg-noise">
+    <section id="zombies" className="relative py-24 bg-noise bg-grid-lines">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -73,7 +85,7 @@ const ZombieSection = () => {
             transition={{ delay: 0.2, duration: 0.5 }}
             className="inline-block mb-4"
           >
-            <span className="px-4 py-1.5 rounded-full bg-blood/10 border border-blood/30 text-blood text-sm font-medium tracking-wide flex items-center gap-2">
+            <span className="px-4 py-1.5 rounded-full bg-hazard/10 border border-hazard/30 text-hazard text-sm font-medium tracking-wide flex items-center gap-2">
               <span className="text-base">⚠</span> Threat Alert
             </span>
           </motion.div>
@@ -95,19 +107,27 @@ const ZombieSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.15 }}
-              onClick={() => setSelectedZombie(index)}
-              className={`relative cursor-pointer group ${
-                selectedZombie === index ? "ring-2 ring-blood" : ""
-              }`}
+              whileHover={{ 
+                y: -10, 
+                transition: { duration: 0.3, ease: "easeOut" } 
+              }}
+              className="relative cursor-pointer group"
             >
-              <div className="bg-card/80 border border-border/50 rounded-xl p-6 hover:border-blood/50 transition-all duration-300 hover:bg-card">
+              {/* Red glow effect */}
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-blood to-blood rounded-xl opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-500" />
+              
+              <div className="relative bg-card/80 border border-border/50 rounded-xl p-6 hover:border-blood/50 transition-all duration-300 hover:bg-card">
                 {/* Header */}
                 <div className="flex items-center gap-4 mb-4">
                   <div
-                    className="w-16 h-16 rounded-xl flex items-center justify-center text-3xl"
+                    className="w-16 h-16 rounded-xl overflow-hidden flex items-center justify-center"
                     style={{ backgroundColor: `${zombie.color}20` }}
                   >
-                    {zombie.emoji}
+                    <img 
+                      src={zombie.image} 
+                      alt={zombie.name}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                   <div>
                     <h3 className="text-2xl font-display text-foreground">

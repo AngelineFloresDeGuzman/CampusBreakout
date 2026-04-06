@@ -80,12 +80,10 @@ const HeroSection = () => {
           muted={isMuted}
           loop
           playsInline
-          className="w-full h-full object-cover object-center"
+          className="w-full h-full object-cover sm:object-cover object-contain"
         >
           <source src={heroVideo} type="video/mp4" />
         </video>
-        {/* Ultra minimal gradient - just for bottom text readability */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
       </motion.div>
 
       {/* Sound Toggle */}

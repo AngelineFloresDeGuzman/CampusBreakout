@@ -1,4 +1,4 @@
-import logo from "@/assets/campus-breakout-logo.png";
+import logo from "@/assets/campus-breakout-logo2.png";
 
 const Footer = () => {
   return (

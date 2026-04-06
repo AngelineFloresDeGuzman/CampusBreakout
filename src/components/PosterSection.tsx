@@ -15,6 +15,7 @@ const PosterSection = () => {
   return (
     <section
       ref={sectionRef}
+      id="poster"
       className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-b from-background via-blood/5 to-background"
     >
       {/* Background glow effect */}
@@ -59,14 +60,13 @@ const PosterSection = () => {
             {/* Buttons */}
             <div className="flex flex-wrap gap-4">
               <motion.a
-                href="https://github.com/AngelineFloresDeGuzman/CampusBreakout/releases/download/v1.0.0/CampusBreakout.apk"
-                download
+                href="#download"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="inline-flex items-center gap-2 px-6 py-3 bg-blood text-white font-bold rounded-full hover:bg-blood/90 transition-all"
               >
                 <Download className="w-5 h-5" />
-                Download Android APK
+                Download APK
               </motion.a>
 
               <motion.a

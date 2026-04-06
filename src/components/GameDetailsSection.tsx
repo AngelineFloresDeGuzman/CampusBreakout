@@ -1,18 +1,28 @@
 import { motion } from "framer-motion";
+import campusBg from "@/assets/campus.png";
 
 const details = [
   { label: "Title", value: "Campus Breakout" },
   { label: "Theme", value: "Zombie Outbreak" },
   { label: "Genre", value: "2D Top-Down Survival Horror" },
   { label: "Engine", value: "Unity" },
-  { label: "Release Date", value: "April 6, 2026" },
+  { label: "Pre-release Date", value: "April 6, 2026" },
+  { label: "Official Release Date", value: "April 16, 2026" },
   { label: "Website", value: "campusbreakout.vercel.app" },
 ];
 
 const GameDetailsSection = () => {
   return (
     <section id="details" className="relative py-24">
-      <div className="container mx-auto px-4">
+      {/* Background Image */}
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
+        style={{ backgroundImage: `url(${campusBg})` }}
+      />
+      {/* Dark overlay */}
+      <div className="absolute inset-0 bg-black/40" />
+      
+      <div className="container mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}

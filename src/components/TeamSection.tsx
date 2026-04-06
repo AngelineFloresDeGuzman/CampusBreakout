@@ -91,8 +91,8 @@ const TeamSection = () => {
               whileHover={{ y: -10 }}
               className="group relative"
             >
-              {/* Glow effect */}
-              <div className={`absolute -inset-0.5 bg-gradient-to-r ${member.color} rounded-2xl opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-500`} />
+              {/* Glow effect - red */}
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-blood to-blood rounded-2xl opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-500" />
               
               <div className="relative overflow-hidden rounded-2xl h-[600px]">
                 {/* Full background image */}
@@ -106,19 +106,19 @@ const TeamSection = () => {
                 
                 {/* Content - positioned lower with padding-top */}
                 <div className="relative px-6 pb-6 pt-[280px] h-full flex flex-col justify-end">
-                  <h3 className="text-2xl font-display text-blood mb-1 group-hover:text-primary transition-colors">
+                  <h3 className="text-2xl font-display text-blood mb-1 group-hover:text-primary transition-colors text-center">
                     {member.name}
                   </h3>
                   
-                  <p className="text-primary text-sm font-body uppercase tracking-wider mb-1">
+                  <p className="text-primary text-sm font-body uppercase tracking-wider mb-1 text-center">
                     {member.role}
                   </p>
                   
-                  <p className="text-white/70 text-xs mb-3">
+                  <p className="text-white/70 text-xs mb-3 text-center">
                     {member.focus}
                   </p>
                   
-                  <p className="text-white/80 text-sm leading-relaxed font-body">
+                  <p className="text-white/80 text-sm leading-relaxed font-body text-justify">
                     {member.description}
                   </p>
                 </div>

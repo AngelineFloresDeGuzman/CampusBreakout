@@ -4,6 +4,7 @@ import { Menu, X, Play, Download } from "lucide-react";
 import logo from "@/assets/campus-breakout-logo.png";
 
 const links = [
+  { label: "Poster", href: "#poster" },
   { label: "Trailer", href: "#trailer" },
   { label: "Backstory", href: "#backstory" },
   { label: "Zombies", href: "#zombies" },
@@ -13,7 +14,7 @@ const links = [
   { label: "Download", href: "#download" },
 ];
 
-const Navbar = () => {
+const Navbar = ({ activeSection }: { activeSection: string }) => {
   const [open, setOpen] = useState(false);
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -27,54 +28,65 @@ const Navbar = () => {
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-black/50 backdrop-blur-md border-b border-white/10">
-      <div className="w-full px-6 lg:px-12 flex items-center justify-between h-20">
-        {/* Left side - Logo + Navigation */}
-        <div className="flex items-center gap-8">
-          {/* Logo + Brand */}
+      <div className="w-full px-6 lg:px-12 flex items-center h-20">
+        {/* Left - Logo */}
+        <div className="flex-shrink-0 w-48">
           <a href="#" className="flex items-center gap-3">
             <img src={logo} alt="Campus Breakout" className="h-10 w-auto" />
-            <img src="/src/assets/campus-breakout-logo.2png" alt="" className="h-6 w-auto hidden sm:block" />
+            <span className="hidden sm:block text-xl font-display text-blood tracking-wide whitespace-nowrap">
+              Campus Breakout
+            </span>
           </a>
-
-          {/* Desktop - Navigation */}
-          <div className="hidden md:flex items-center gap-6">
-            {links.map((l) => (
-              <a
-                key={l.label}
-                href={l.href}
-                onClick={(e) => handleNavClick(e, l.href)}
-                className="text-white/70 hover:text-white text-sm font-medium transition-colors tracking-wide cursor-pointer"
-              >
-                {l.label}
-              </a>
-            ))}
-          </div>
         </div>
 
-        {/* Right side - CTA Buttons */}
-        <div className="hidden md:flex items-center gap-3">
+        {/* Center - Navigation */}
+        <div className="hidden md:flex flex-1 items-center justify-center gap-8">
+          {links.map((l) => (
+            <a
+              key={l.label}
+              href={l.href}
+              onClick={(e) => handleNavClick(e, l.href)}
+              className={`relative text-sm font-medium transition-colors tracking-wide cursor-pointer ${
+                activeSection === l.href 
+                  ? "text-blood" 
+                  : "text-white/70 hover:text-white"
+              }`}
+            >
+              {l.label}
+              {activeSection === l.href && (
+                <motion.span
+                  layoutId="activeNav"
+                  className="absolute left-1/2 -translate-x-1/2 -bottom-2 w-1.5 h-1.5 rounded-full bg-blood"
+                />
+              )}
+            </a>
+          ))}
+        </div>
+
+        {/* Right - CTA Buttons */}
+        <div className="hidden md:flex flex-shrink-0 w-48 items-center justify-end gap-3">
           <a
             href="#trailer"
             onClick={(e) => handleNavClick(e, '#trailer')}
-            className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium text-white/80 hover:text-white border border-white/20 hover:border-white/40 rounded-full transition-all cursor-pointer"
+            className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium text-white/80 hover:text-white border border-white/20 hover:border-white/40 rounded-full transition-all cursor-pointer whitespace-nowrap"
           >
             <Play className="w-4 h-4" />
-            Trailer
+            <span className="whitespace-nowrap">Watch Trailer</span>
           </a>
           <a
             href="#download"
             onClick={(e) => handleNavClick(e, '#download')}
-            className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium text-white bg-blood hover:bg-blood/90 rounded-full transition-all cursor-pointer"
+            className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium text-white bg-blood hover:bg-blood/90 rounded-full transition-all cursor-pointer whitespace-nowrap"
           >
             <Download className="w-4 h-4" />
-            Download
+            <span className="whitespace-nowrap">Download APK</span>
           </a>
         </div>
 
         {/* Mobile toggle */}
         <button
           onClick={() => setOpen(!open)}
-          className="md:hidden text-white p-2 rounded-lg hover:bg-white/10 transition-colors z-50"
+          className="md:hidden text-white p-2 rounded-lg hover:bg-white/10 transition-colors z-50 ml-auto"
           aria-label="Toggle menu"
         >
           {open ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}

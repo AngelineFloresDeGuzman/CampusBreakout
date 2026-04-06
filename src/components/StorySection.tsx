@@ -55,7 +55,7 @@ const StorySection = () => {
   const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
 
   return (
-    <section ref={containerRef} id="story" className="relative py-32 overflow-hidden">
+    <section ref={containerRef} id="story" className="relative py-32 overflow-hidden bg-grid-lines">
       {/* Parallax background */}
       <motion.div 
         style={{ y: backgroundY }}

@@ -65,25 +65,6 @@ const BackStorySection = () => {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="max-w-3xl mx-auto mb-12"
-        >
-          <div className="bg-card/50 border border-border/50 rounded-lg p-8">
-            <p className="font-body text-foreground leading-relaxed mb-6">
-              In the halls of a quiet university, a normal day quickly turns into a nightmare. What starts as a strange illness among students soon spirals into chaos as the infected turn aggressive, violent, and uncontrollable. The campus, once full of life and learning, becomes a battleground for survival.
-            </p>
-            <p className="font-body text-foreground leading-relaxed mb-6">
-              The source of the outbreak remains unknown. Some whisper about a secret experiment gone wrong in the science wing, others suspect a contaminated batch of experimental medication. As the infection spreads rapidly through the dormitories and lecture halls, those who remain uninfected must fight to survive.
-            </p>
-            <p className="font-body text-muted-foreground leading-relaxed">
-              You are one of the few survivors left. With limited supplies, improvised weapons, and the constant threat of the undead lurking around every corner, your only goal is to escape the campus alive. But the deeper you venture into the infected grounds, the more you realize that some secrets are better left buried…
-            </p>
-          </div>
-        </motion.div>
-
-        <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}

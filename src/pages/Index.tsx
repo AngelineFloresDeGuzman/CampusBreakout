@@ -12,9 +12,44 @@ import Footer from "@/components/Footer";
 import AtmosphericEffects from "@/components/AtmosphericEffects";
 import CustomCursor from "@/components/CustomCursor";
 import ScrollProgress from "@/components/ScrollProgress";
+import SectionNavigator from "@/components/SectionNavigator";
 import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+
+const sections = [
+  { id: "poster", label: "Poster" },
+  { id: "trailer", label: "Trailer" },
+  { id: "backstory", label: "Backstory" },
+  { id: "zombies", label: "Zombies" },
+  { id: "story", label: "Story" },
+  { id: "details", label: "Details" },
+  { id: "team", label: "Team" },
+  { id: "download", label: "Download" },
+];
 
 const Index = () => {
+  const [activeSection, setActiveSection] = useState("");
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(`#${entry.target.id}`);
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    sections.forEach((section) => {
+      const element = document.querySelector(`#${section.id}`);
+      if (element) observer.observe(element);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <motion.div 
       initial={{ opacity: 0 }}
@@ -25,7 +60,8 @@ const Index = () => {
       <CustomCursor />
       <ScrollProgress />
       <AtmosphericEffects />
-      <Navbar />
+      <Navbar activeSection={activeSection} />
+      <SectionNavigator activeSection={activeSection} />
       <main className="relative z-10">
         <HeroSection />
         <PosterSection />
