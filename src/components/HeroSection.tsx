@@ -2,6 +2,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 import { ChevronDown, Volume2, VolumeX } from "lucide-react";
 import heroVideo from "@/assets/campus-breakout-logo.mp4";
+import heroPoster from "@/assets/campus-breakout-logo.png";
 import jumpScareSound from "@/assets/jump-scare.mp3";
 
 const HeroSection = () => {
@@ -14,11 +15,18 @@ const HeroSection = () => {
     audioRef.current = new Audio(jumpScareSound);
     audioRef.current.volume = 0.8;
 
-    // Start video muted for autoplay to work
+    // Try to autoplay with sound first
     if (videoRef.current) {
-      videoRef.current.muted = true;
+      videoRef.current.muted = false;
       videoRef.current.volume = 1.0;
-      videoRef.current.play().catch(() => {});
+      videoRef.current.play().catch(() => {
+        // Autoplay with sound blocked, fallback to muted
+        if (videoRef.current) {
+          videoRef.current.muted = true;
+          setIsMuted(true);
+          videoRef.current.play().catch(() => {});
+        }
+      });
     }
   }, []);
 
@@ -83,6 +91,8 @@ const HeroSection = () => {
           muted={isMuted}
           loop
           playsInline
+          preload="auto"
+          poster={heroPoster}
           className="w-full h-full object-contain md:object-cover"
         >
           <source src={heroVideo} type="video/mp4" />
