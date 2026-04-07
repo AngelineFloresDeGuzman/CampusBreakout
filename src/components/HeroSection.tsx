@@ -9,7 +9,6 @@ const HeroSection = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [isMuted, setIsMuted] = useState(true);
-  const [userMuted, setUserMuted] = useState(true);
 
   useEffect(() => {
     audioRef.current = new Audio(jumpScareSound);
@@ -18,18 +17,24 @@ const HeroSection = () => {
     // Start video muted for autoplay to work
     if (videoRef.current) {
       videoRef.current.muted = true;
+      videoRef.current.volume = 1.0;
       videoRef.current.play().catch(() => {});
     }
+  }, []);
 
-    // Observe visibility to control video
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.muted = isMuted;
+    }
+  }, [isMuted]);
+
+  useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (!entry.isIntersecting && videoRef.current) {
-            // Pause when scrolled out of view
             videoRef.current.pause();
           } else if (entry.isIntersecting && videoRef.current) {
-            // Play when scrolled back into view
             videoRef.current.play().catch(() => {});
           }
         });
@@ -42,7 +47,7 @@ const HeroSection = () => {
     }
 
     return () => observer.disconnect();
-  }, [userMuted]);
+  }, []);
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end start"],
@@ -57,8 +62,14 @@ const HeroSection = () => {
     if (videoRef.current) {
       const newMutedState = !isMuted;
       videoRef.current.muted = newMutedState;
+      videoRef.current.volume = 1.0;
       setIsMuted(newMutedState);
-      setUserMuted(newMutedState); // Track if user manually muted
+      
+      if (!newMutedState) {
+        videoRef.current.play().catch((err) => {
+          console.log("Play error:", err);
+        });
+      }
     }
   };
 
@@ -72,7 +83,7 @@ const HeroSection = () => {
           muted={isMuted}
           loop
           playsInline
-          className="w-full h-full object-cover sm:object-cover object-contain"
+          className="w-full h-full object-contain md:object-cover"
         >
           <source src={heroVideo} type="video/mp4" />
         </video>
