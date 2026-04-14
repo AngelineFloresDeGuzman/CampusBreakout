@@ -128,7 +128,7 @@ const DownloadSection = () => {
             )}
 
             <motion.a
-              href="https://github.com/AngelineFloresDeGuzman/CampusBreakout/releases/download/v1.0.0/CampusBreakout.apk"
+              href="https://github.com/AngelineFloresDeGuzman/CampusBreakout/releases/download/v1.0.1/CampusBreakout.apk"
               download
               onClick={handleDownloadClick}
               whileHover={{ scale: 1.05 }}
