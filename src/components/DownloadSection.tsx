@@ -167,10 +167,10 @@ const DownloadSection = () => {
           >
             <span className="flex items-center gap-2 text-blood">
               <span className="w-2 h-2 bg-blood rounded-full animate-pulse" />
-              Beta v1.2.0
+              v1.0.1
             </span>
             <div className="w-px h-4 bg-border" />
-            <span>~250 MB</span>
+            <span>~251 MB</span>
             <div className="w-px h-4 bg-border" />
             <span>Android</span>
           </motion.div>
