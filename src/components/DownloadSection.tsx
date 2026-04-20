@@ -128,7 +128,7 @@ const DownloadSection = () => {
             )}
 
             <motion.a
-              href="https://github.com/AngelineFloresDeGuzman/CampusBreakout/releases/download/v1.0.1/CampusBreakout.apk"
+              href="https://github.com/AngelineFloresDeGuzman/CampusBreakout/releases/download/v1.0.0/CampusBreakout.apk"
               download
               onClick={handleDownloadClick}
               whileHover={{ scale: 1.05 }}
@@ -167,10 +167,10 @@ const DownloadSection = () => {
           >
             <span className="flex items-center gap-2 text-blood">
               <span className="w-2 h-2 bg-blood rounded-full animate-pulse" />
-              v1.0.1
+              v1.0.0
             </span>
             <div className="w-px h-4 bg-border" />
-            <span>~251 MB</span>
+            <span>~652 KB</span>
             <div className="w-px h-4 bg-border" />
             <span>Android</span>
           </motion.div>
