@@ -183,7 +183,7 @@ const DownloadSection = () => {
             transition={{ delay: 0.8 }}
             className="mt-6 text-xs text-blood/70 max-w-md mx-auto"
           >
-            ⚠ WARNING: By downloading, you acknowledge this game contains horror themes, jump scares, and intense survival scenarios. Player discretion is advised.
+            ⚠️ WARNING: By downloading, you acknowledge this game contains horror themes, jump scares, and intense survival scenarios. Player discretion is advised.
           </motion.p>
         </motion.div>
       </div>
