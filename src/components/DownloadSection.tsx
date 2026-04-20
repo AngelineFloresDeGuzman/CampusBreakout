@@ -170,7 +170,7 @@ const DownloadSection = () => {
               v1.0.0
             </span>
             <div className="w-px h-4 bg-border" />
-            <span>~652 KB</span>
+            <span>~252 MB</span>
             <div className="w-px h-4 bg-border" />
             <span>Android</span>
           </motion.div>
